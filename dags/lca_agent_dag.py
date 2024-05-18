@@ -37,7 +37,7 @@ def post_request(
 
 
 agent_url = "/openai_agent/invoke"
-openai_url = "/openai/invoke"
+openai_url = "/openai_chain/invoke"
 
 
 def agent_formatter(ti):
@@ -75,7 +75,7 @@ with DAG(
     task_1 = PythonOperator(
         task_id="openai",
         python_callable=openai,
-        op_kwargs={"data_to_send": {"input": "翻译成英文：今天北京天气如何?"}},
+        op_kwargs={"data_to_send": {"input": "翻译成英文：今天东京天气如何?"}},
     )
     task_2 = PythonOperator(
         task_id="agent",
